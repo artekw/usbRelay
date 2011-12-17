@@ -1,12 +1,8 @@
-/* Name: usbconfig.h
- * Project: V-USB, virtual USB port for Atmel's(r) AVR(r) microcontrollers
- * Author: Christian Starkjohann
- * Creation Date: 2005-04-01
- * Tabsize: 4
- * Copyright: (c) 2005 by OBJECTIVE DEVELOPMENT Software GmbH
- * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
- * This Revision: $Id: usbconfig-prototype.h 785 2010-05-30 17:57:07Z cs $
- */
+/*
+# Project: usbrelay
+# Author: Artur Wrononowski
+
+*/
 
 #ifndef __usbconfig_h_included__
 #define __usbconfig_h_included__
@@ -72,6 +68,15 @@ section at the end of this file).
 
 /* --------------------------- Functional Range ---------------------------- */
 
+#define	USB_CFG_SAMPLE_EXACT			1
+/* This variable affects Sampling Jitter for USB receiving. When it is 0, the
+ * driver guarantees a sampling window of 1/2 bit. The USB spec requires
+ * that the receiver has at most 1/4 bit sampling window. The 1/2 bit window
+ * should still work reliably enough because we work at low speed. If you want
+ * to meet the spec, set this value to 1. This will unroll a loop which
+ * results in bigger code size.
+ * If you have problems with long cables, try setting this value to 1.
+ */
 #define USB_CFG_HAVE_INTRIN_ENDPOINT    1
 /* Define this to 1 if you want to compile a version with two endpoints: The
  * default control endpoint 0 and an interrupt-in endpoint (any other endpoint
@@ -83,8 +88,8 @@ section at the end of this file).
  * configured below) and a catch-all default interrupt-in endpoint as above.
  * You must also define USB_CFG_HAVE_INTRIN_ENDPOINT to 1 for this feature.
  */
-#define USB_CFG_EP3_NUMBER              3
-/* If the so-called endpoint 3 is used, it can now be configured to any other
+/*#define USB_CFG_EP3_NUMBER              3
+ *If the so-called endpoint 3 is used, it can now be configured to any other
  * endpoint number (except 0) with this macro. Default if undefined is 3.
  */
 /* #define USB_INITIAL_DATATOKEN           USBPID_DATA1 */
@@ -116,7 +121,7 @@ section at the end of this file).
 /* Define this to 1 if the device has its own power supply. Set it to 0 if the
  * device is powered from the USB bus.
  */
-#define USB_CFG_MAX_BUS_POWER           40
+#define USB_CFG_MAX_BUS_POWER           75
 /* Set this variable to the maximum USB bus power consumption of your device.
  * The value is in milliamperes. [It will be divided by two since USB
  * communicates power requirements in units of 2 mA.]
@@ -257,8 +262,8 @@ section at the end of this file).
  * obdev's free shared VID/PID pair. See the file USB-IDs-for-free.txt for
  * details.
  */
-#define USB_CFG_DEVICE_NAME     'U', 'S', 'B', '-', 'f', 'e', 't'
-#define USB_CFG_DEVICE_NAME_LEN 7
+#define USB_CFG_DEVICE_NAME     'u', 's', 'b', 'R', 'e', 'l', 'a', 'y'
+#define USB_CFG_DEVICE_NAME_LEN 8
 /* Same as above for the device name. If you don't want a device name, undefine
  * the macros. See the file USB-IDs-for-free.txt before you assign a name if
  * you use a shared VID/PID.

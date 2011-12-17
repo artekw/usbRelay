@@ -1,12 +1,7 @@
-/* Name: main.c
- * Project: hid-custom-rq example
- * Author: Christian Starkjohann
- * Creation Date: 2008-04-07
- * Tabsize: 4
- * Copyright: (c) 2008 by OBJECTIVE DEVELOPMENT Software GmbH
- * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
- * This Revision: $Id: main.c 790 2010-05-30 21:00:26Z cs $
- */
+/*
+# Project: usbrelay
+# Author: Artur Wrononowski
+*/
 
 /*
 This example should run on most AVRs with only little changes. No special

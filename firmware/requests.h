@@ -1,12 +1,7 @@
-/* Name: requests.h
- * Project: custom-class, a basic USB example
- * Author: Christian Starkjohann
- * Creation Date: 2008-04-09
- * Tabsize: 4
- * Copyright: (c) 2008 by OBJECTIVE DEVELOPMENT Software GmbH
- * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
- * This Revision: $Id: requests.h 692 2008-11-07 15:07:40Z cs $
- */
+/*
+# Project: usbrelay
+# Author: Artur Wrononowski
+*/
 
 /* This header is shared between the firmware and the host software. It
  * defines the USB request numbers (and optionally data types) used to

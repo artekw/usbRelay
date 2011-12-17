@@ -1,21 +1,14 @@
 # Name: Makefile
-# Project: hid-custom-rq example
-# Author: Christian Starkjohann
-# Creation Date: 2008-04-07
-# Tabsize: 4
-# Copyright: (c) 2008 by OBJECTIVE DEVELOPMENT Software GmbH
-# License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
-# This Revision: $Id: Makefile 692 2008-11-07 15:07:40Z cs $
+# Project: usbrelay
+# Author: Artur Wrononowski
 
 DEVICE  = attiny45
 F_CPU   = 16500000	# in Hz
 FUSE_L  = 0xe1
 FUSE_H  = 0xdd
-AVRDUDE = avrdude -c usbasp -p $(DEVICE) # edit this line for your programmer
+AVRDUDE = avrdude -c buspirate -p $(DEVICE) -P /dev/buspirate # edit this line for your programmer
 
-#CFLAGS  = -Iusbdrv -I. -DDEBUG_LEVEL=0
 CFLAGS = -Iusbdrv -I. -Ilibs-device -DDEBUG_LEVEL=0
-# OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o main.o
 OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o main.o usbdrv/osccal.o
 
 COMPILE = avr-gcc -Wall -Os -DF_CPU=$(F_CPU) $(CFLAGS) -mmcu=$(DEVICE)
@@ -125,7 +118,6 @@ flash: main.hex
 
 # rule for deleting dependent files (those which can be built by Make):
 clean:
-#	rm -f main.hex main.lst main.obj main.cof main.list main.map main.eep.hex main.elf *.o usbdrv/*.o main.s usbdrv/oddebug.s usbdrv/usbdrv.s
 	rm -f main.hex main.lst main.obj main.cof main.list main.map main.eep.hex main.elf *.o usbdrv/*.o main.s usbdrv/oddebug.s usbdrv/usbdrv.s  libs-device/osccal.o
 
 # Generic rule for compiling C files:
