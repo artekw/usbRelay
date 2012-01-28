@@ -18,7 +18,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/usbrelay
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libusb-1.0
+  DEPENDS:=+libusb
   TITLE:=usbrelay
 endef
 
